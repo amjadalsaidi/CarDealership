@@ -43,7 +43,7 @@ public class DealershipFileManager {
 
     }
     public void saveDealership (Dealership  dealership){
-        
+        // we need to add a bufferwriter and a try catch
     }
 }
 
