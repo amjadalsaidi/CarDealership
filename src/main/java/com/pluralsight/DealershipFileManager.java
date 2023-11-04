@@ -13,9 +13,9 @@ public class DealershipFileManager {
             String line = br.readLine();
             String[] pipes = line.split("\\|");
             String name = pipes[0];
-            String adress = pipes[1];
+            String address = pipes[1];
             String phoneNumber = pipes[2];
-         dealership1 = new Dealership(name, adress, phoneNumber);
+         dealership1 = new Dealership(name, address, phoneNumber);
             List<Vehicle> vehicles = dealership1.getAllVehicles();
       while ((line =br.readLine())!=null){
           String[] tokens = line.split("\\|");
@@ -43,8 +43,37 @@ public class DealershipFileManager {
 
     }
     public void saveDealership (Dealership  dealership){
-        // we need to add a bufferwriter and a try catch
+
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv"))) {
+
+
+            writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
+            writer.newLine();
+
+
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                writer.write(
+                        vehicle.getVin() + "|" +
+                                vehicle.getYear() + "|" +
+                                vehicle.getMake() + "|" +
+                                vehicle.getModel() + "|" +
+                                vehicle.getVehicleType() + "|" +
+                                vehicle.getColor() + "|" +
+                                vehicle.getOdometer() + "|" +
+                                vehicle.getPrice()
+                );
+                writer.newLine();
+                writer.close();
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error while saving dealership data to the file: " + e.getMessage());
+        }
+        }
+
+
     }
-}
+
 
 

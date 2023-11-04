@@ -85,7 +85,7 @@ public class Dealership {
     public List<Vehicle> getVehiclesByMileage(int odometer) {
         List<Vehicle> smallvehicles = new ArrayList<>();
         for (Vehicle v : inventory) {
-            if (v.getOdometer() == odometer) {
+            if (v.getOdometer() <= odometer) {
                 smallvehicles.add(v);
             }
         }
