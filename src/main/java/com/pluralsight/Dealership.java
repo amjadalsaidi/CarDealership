@@ -40,7 +40,7 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public List<Vehicle> getVehiclesByPrice(double min, double max) {
+    public List<Vehicle>getVehiclesByPrice (double min, double max) {
         List<Vehicle> smallvehicles = new ArrayList<>();
         for (Vehicle v : inventory) {
             if (v.getPrice() >= min && v.getPrice() <= max) {
@@ -104,6 +104,7 @@ public class Dealership {
      public  List<Vehicle> getAllVehicles() {
          return this.inventory;
      }
+
         public void addVehicle(Vehicle vehicle) {
             this.inventory.add(vehicle);
 

@@ -15,24 +15,21 @@ public class DealershipFileManager {
             String name = pipes[0];
             String address = pipes[1];
             String phoneNumber = pipes[2];
-         dealership1 = new Dealership(name, address, phoneNumber);
+            dealership1 = new Dealership(name, address, phoneNumber);
             List<Vehicle> vehicles = dealership1.getAllVehicles();
-      while ((line =br.readLine())!=null){
-          String[] tokens = line.split("\\|");
-           int vin = Integer.parseInt(tokens[0]);
-           int year = Integer.parseInt(tokens[1]);
-           String make = tokens[2];
-           String model = tokens[3];
-           String vehicleType = tokens[4];
-           String color = tokens[5];
-           int odometer = Integer.parseInt(tokens[6]);
-           double price = Double.parseDouble(tokens[7]);
-           dealership1.addVehicle(new Vehicle(vin, year,make,model,vehicleType,color,odometer,price));
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split("\\|");
+                int vin = Integer.parseInt(tokens[0]);
+                int year = Integer.parseInt(tokens[1]);
+                String make = tokens[2];
+                String model = tokens[3];
+                String vehicleType = tokens[4];
+                String color = tokens[5];
+                int odometer = Integer.parseInt(tokens[6]);
+                double price = Double.parseDouble(tokens[7]);
+                dealership1.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
             }
-      br.close();
-
-
-
+            br.close();
 
 
         } catch (IOException e) {
@@ -42,7 +39,8 @@ public class DealershipFileManager {
         return dealership1;
 
     }
-    public void saveDealership (Dealership  dealership){
+
+    public void saveDealership(Dealership dealership) {
 
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv"))) {
@@ -70,10 +68,6 @@ public class DealershipFileManager {
         } catch (IOException e) {
             throw new RuntimeException("Error while saving dealership data to the file: " + e.getMessage());
         }
-        }
-
-
     }
 
-
-
+}
